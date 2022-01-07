@@ -1,0 +1,24 @@
+{
+  "name": "gleam-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gleam:clean": "rm -rf ./src/gen",
+    "gleam:prepare": "cd ./src/gleam && find . -type f -iname \"*.js\" -ls -exec ditto {} ../gen/{} \\; && cd ../../",
+    "gleam:build": "gleam compile-package --name gleam-playground --target javascript --src src/gleam --out src/gen",
+    "gleam:build-clean": "npm run gleam:clean && npm run gleam:prepare && npm run gleam:build",
+    "gleam:watch": "chokidar \"./src/gleam/**/*\" -c \"npm run gleam:prepare && npm run gleam:build\"",
+    "start": "parcel src/index.html"
+  },
+  "author": "Hayleigh Thompson",
+  "license": "MIT",
+  "devDependencies": {
+    "chokidar": "^3.5.2",
+    "chokidar-cli": "^2.1.0",
+    "parcel": "^2.0.0-beta.3.1"
+  },
+  "dependencies": {
+    "morphdom": "^2.6.1"
+  }
+}

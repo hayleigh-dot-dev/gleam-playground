@@ -1,0 +1,6 @@
+.parcel-cache
+node_modules
+.vscode
+src/gen
+
+.gleam_module
